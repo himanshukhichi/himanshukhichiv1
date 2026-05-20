@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 const items = [
   { label: "About", href: "#about", id: "about" },
   { label: "Experience", href: "#experience", id: "experience" },
-  { label: "Projects", href: "#projects", id: "projects" }
+  { label: "Projects", href: "#projects", id: "projects" },
+  { label: "Skills", href: "#skills", id: "skills" },
+  { label: "Education", href: "#education", id: "education" }
 ];
 
 export function NavLinks() {

@@ -12,92 +12,99 @@ export const profile = {
     stackoverflow: ""
   },
   about: [
-    "I am a Backend and Platform Engineer at Oracle Financial Services Software, where I work on ML platform systems, model serving, backend APIs, and cloud migration.",
-    "Across around five years of engineering work, I have built distributed backend services, CI/CD pipelines, dataset profiling systems, drift detection capabilities, and Oracle Cloud Infrastructure based SaaS deployments.",
-    "My strongest work sits where correctness, scalability, and operational reliability matter: API design, production ML infrastructure, cloud migration, release automation, and developer experience.",
-    "I like turning complex platform problems into systems that are understandable, observable, and dependable for the teams that use them."
+    "I'm a backend and platform engineer with 5 years of experience building production-grade infrastructure at Oracle Financial Services Software (OFSS), Bengaluru. I specialize in ML platform engineering, distributed systems, and cloud-native SaaS — with a deep focus on the messy, interesting problems that sit between model training and real-world deployment.",
+    "At Oracle, I work on Model Management & Governance (MMG) — an enterprise ML platform that helps financial institutions manage the full lifecycle of their AI/ML models, from registration and validation to deployment, monitoring, and regulatory compliance.",
+    "I'm passionate about systems that scale, APIs that don't lie, and pipelines that don't silently fail. Outside of work, I invest time in structured learning across distributed systems, system design, and low-level performance engineering.",
+    "I hold a B.Tech in Computer Science from NIT Warangal."
   ],
   experience: [
     {
-      period: "2024 — Present",
-      role: "Software Developer, ML Platform",
-      company: "Oracle Financial Services Software",
+      period: "2021 — Present",
+      location: "Bengaluru, India",
+      role: "Software Engineer",
+      company: "Oracle Financial Services Software (OFSS)",
       companyUrl: "https://www.oracle.com/",
       summary:
-        "Design and build platform capabilities for Model Management & Governance, including model serving, SaaS migration to OCI, release automation, and backend APIs for enterprise ML workflows.",
-      technologies: ["Java", "Spring Boot", "OCI", "Docker", "Kubernetes", "REST APIs"]
-    },
-    {
-      period: "2021 — 2024",
-      role: "Associate Software Developer",
-      company: "Oracle Financial Services Software",
-      companyUrl: "https://www.oracle.com/",
-      summary:
-        "Built dataset profiling, analytics, transformation, and data drift capabilities for the ML platform while contributing backend APIs and frontend views used by product teams.",
-      technologies: ["Java", "Python", "SQL", "Oracle JET", "CI/CD", "Data Profiling"]
-    },
-    {
-      period: "2017 — 2021",
-      role: "Computer Science & Engineering",
-      company: "NIT Warangal",
-      companyUrl: "https://www.nitw.ac.in/",
-      summary:
-        "Completed B.Tech coursework focused on data structures, algorithms, databases, operating systems, object-oriented programming, and core computer science fundamentals.",
-      technologies: ["Algorithms", "Databases", "Operating Systems", "OOP"]
+        "Oracle Financial Services Software is a global leader in financial technology, providing software solutions to banks and financial institutions worldwide. I am part of the Model Management & Governance (MMG) team — an enterprise-grade ML platform product built for regulated industries where model risk management and auditability are critical.",
+      details: [
+        "Designed and built a model serving platform enabling deployment of ML models as REST APIs, allowing external consumption outside the MMG platform, with support for multi-model hosting, authentication, request-level logging, and Swagger UI-based testing.",
+        "Led end-to-end SaaS migration of the MMG platform from on-premises to Oracle Cloud Infrastructure (OCI); ported the codebase, built SaaS services and jobs (WAR/JAR), and implemented a unified codebase strategy to maintain consistency across on-prem and SaaS deployments.",
+        "Built OCI DevOps CI/CD pipelines for multiple MMG microservices to automate Docker image builds and artifact publishing (JAR/WAR) to Artifactory, standardizing build and release workflows across services.",
+        "Enabled generation of both JAR and WAR artifacts within a single CI/CD pipeline, simplifying build workflows across services.",
+        "Provisioned and managed OCI development instances using the AppMan pipeline with environment-specific configurations; handled instance lifecycle and supported release activities across MMG services.",
+        "Developed a createConda API to provision isolated conda environments from Object Storage specifications, eliminating manual admin workflows and reducing environment setup time by ~80%.",
+        "Reduced per-dataset storage by 99.9% (GBs to KBs) by building a scheduled profiling pipeline (whylogs) that generates compact .bin profile files capturing per-feature stats across thousands of datasets.",
+        "Developed dataset analytics features including profile comparisons, time-series visualizations, and correlation insights for feature-level monitoring.",
+        "Designed and implemented a data drift detection service: aggregates profiles into baseline and target distributions, computes per-feature drift with configurable thresholds, and triggers automated alerts when data quality degrades.",
+        "Engineered backend APIs (Java, Spring Boot) and UI components (Oracle JET) for dataset transformations, including reusable script templates to standardize transformation workflows across datasets."
+      ],
+      technologies: ["Java", "Spring Boot", "OCI", "Docker", "Kubernetes", "CI/CD", "Oracle JET"]
     }
   ],
   projects: [
     {
-      title: "Model Serving Platform",
+      title: "Distributed Job Orchestrator",
       href: "/assets/himanshu-khichi-resume.pdf",
       description:
-        "Deploys ML models as REST APIs with multi-model hosting, authentication, request-level logging, and Swagger UI based testing.",
-      technologies: ["Spring Boot", "REST APIs", "Swagger", "Docker"],
+        "Dummy project placeholder for a Java service that coordinates background jobs, retries, status tracking, and operational visibility across worker nodes.",
+      languages: ["java"],
+      technologies: ["Java", "Spring Boot", "PostgreSQL", "Docker"],
       image: "/images/projects/model-serving.png"
     },
     {
-      title: "SaaS Migration to OCI",
+      title: "Cloud Metrics Collector",
       href: "/assets/himanshu-khichi-resume.pdf",
       description:
-        "Moved the MMG platform from on-premises deployments to Oracle Cloud Infrastructure with unified packaging and deployment workflows.",
-      technologies: ["OCI", "Kubernetes", "Docker", "DevOps"],
+        "Dummy project placeholder for a Go-based telemetry collector that scrapes service metrics, batches events, and exports them to a monitoring backend.",
+      languages: ["go"],
+      technologies: ["Go", "Prometheus", "gRPC", "Kubernetes"],
       image: "/images/projects/oci-migration.png"
     },
     {
-      title: "Dataset Profiling Pipeline",
+      title: "Dataset Quality Notebook",
       href: "/assets/himanshu-khichi-resume.pdf",
       description:
-        "Generates compact profile files with per-feature statistics and reduced per-dataset storage by 99.9% across thousands of datasets.",
-      technologies: ["Java", "Python", "SQL", "Analytics"],
+        "Dummy project placeholder for a Python workflow and JavaScript dashboard that profile datasets, compare distributions, and surface drift signals for ML teams.",
+      languages: ["python", "javascript"],
+      technologies: ["Python", "Pandas", "whylogs", "React"],
       image: "/images/projects/data-profiling.png"
-    },
-    {
-      title: "Data Drift Detection Service",
-      href: "/assets/himanshu-khichi-resume.pdf",
-      description:
-        "Compares baseline and target distributions, computes feature-level drift with configurable thresholds, and triggers automated alerts.",
-      technologies: ["Platform", "Statistics", "Alerts", "APIs"],
-      image: "/images/projects/drift-detection.png"
     }
   ],
-  writing: [
+  skills: [
     {
-      year: "2026",
-      title: "Resume: Backend and Platform Engineering",
-      href: "/assets/himanshu-khichi-resume.pdf",
-      image: "/images/writing/resume-preview.png"
+      title: "Languages",
+      items: ["Java", "Python", "SQL", "JavaScript", "Go"]
     },
     {
-      year: "2026",
-      title: "Notes on Building Reliable ML Platform Systems",
-      href: "mailto:himanshukhichi99@gmail.com",
-      image: "/images/projects/model-serving.png"
+      title: "Backend & APIs",
+      items: ["Spring Boot", "REST APIs", "Microservices", "API Design", "Swagger"]
     },
     {
-      year: "2026",
-      title: "OCI Migration and Deployment Playbook",
-      href: "mailto:himanshukhichi99@gmail.com",
-      image: "/images/projects/oci-migration.png"
+      title: "ML Platform & Data",
+      items: ["Model Serving", "Model Monitoring", "Data Drift Detection", "Dataset Profiling", "whylogs"]
+    },
+    {
+      title: "Cloud & DevOps",
+      items: ["Oracle Cloud Infrastructure", "Docker", "Kubernetes", "OCI DevOps", "CI/CD", "Artifactory"]
+    },
+    {
+      title: "Databases & Tooling",
+      items: ["Relational Databases", "Oracle", "SQL Developer", "Git", "Linux"]
+    },
+    {
+      title: "Engineering Fundamentals",
+      items: ["Distributed Systems", "System Design", "Data Structures & Algorithms", "Operating Systems", "Code Review"]
+    }
+  ],
+  education: [
+    {
+      school: "National Institute of Technology Warangal (NIT Warangal)",
+      schoolUrl: "https://www.nitw.ac.in/",
+      period: "Jul 2017 — Jun 2021",
+      degree: "B.Tech, Computer Science & Engineering",
+      details: [
+        "Coursework: Data Structures & Algorithms, Object-Oriented Programming, Database, Operating Systems"
+      ]
     }
   ]
 } as const;

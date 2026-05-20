@@ -12,6 +12,7 @@ import { profile } from "@/lib/profile";
 import { Spotlight } from "@/components/spotlight";
 import { SectionHeading } from "@/components/section-heading";
 import { NavLinks } from "@/components/nav-links";
+import { ProjectList } from "@/components/project-list";
 
 const socials = [
   { label: "GitHub", href: profile.social.github, icon: FaGithub },
@@ -104,6 +105,9 @@ export default function Home() {
                         aria-label={job.period}
                       >
                         {job.period}
+                        <span className="mt-1 block normal-case tracking-normal text-slate-600">
+                          {job.location}
+                        </span>
                       </header>
                       <div className="z-10 sm:col-span-6">
                         <h3 className="font-medium leading-snug text-slate-200">
@@ -125,6 +129,14 @@ export default function Home() {
                           </a>
                         </h3>
                         <p className="mt-2 text-sm leading-normal">{job.summary}</p>
+                        <ul className="mt-4 space-y-3 text-sm leading-normal text-slate-400">
+                          {job.details.map((detail) => (
+                            <li className="relative pl-5" key={detail}>
+                              <span className="absolute left-0 top-2 h-1.5 w-1.5 rounded-full bg-teal-300" />
+                              {detail}
+                            </li>
+                          ))}
+                        </ul>
                         <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
                           {job.technologies.map((tech) => (
                             <li className="mr-1.5 mt-2" key={tech}>
@@ -160,51 +172,7 @@ export default function Home() {
               aria-label="Selected projects"
             >
               <SectionHeading>Projects</SectionHeading>
-              <ul className="group/list">
-                {profile.projects.map((project) => (
-                  <li className="mb-12" key={project.title}>
-                    <article className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                      <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-card-ring lg:group-hover:drop-shadow-lg" />
-                      <div className="z-10 sm:order-2 sm:col-span-6">
-                        <h3>
-                          <a
-                            className="group/link inline-flex items-baseline text-base font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
-                            href={project.href}
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            aria-label={`${project.title} (opens in a new tab)`}
-                          >
-                            <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
-                            <span>
-                              {project.title}{" "}
-                              <span className="inline-block">
-                                <ArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1" />
-                              </span>
-                            </span>
-                          </a>
-                        </h3>
-                        <p className="mt-2 text-sm leading-normal">{project.description}</p>
-                        <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                          {project.technologies.map((tech) => (
-                            <li className="mr-1.5 mt-2" key={tech}>
-                              <span className="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
-                                {tech}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <Image
-                        src={project.image}
-                        alt=""
-                        width={200}
-                        height={112}
-                        className="z-10 aspect-video rounded border-2 border-slate-200/10 object-cover transition group-hover:border-slate-200/30 sm:order-1 sm:col-span-2 sm:translate-y-1"
-                      />
-                    </article>
-                  </li>
-                ))}
-              </ul>
+              <ProjectList />
               <div className="mt-12">
                 <a
                   className="group inline-flex items-center text-base font-semibold leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
@@ -219,45 +187,78 @@ export default function Home() {
             </section>
 
             <section
-              id="writing"
+              id="skills"
               className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
-              aria-label="Writing and links"
+              aria-label="Skills"
             >
-              <SectionHeading>Writing</SectionHeading>
-              <ul className="group/list">
-                {profile.writing.map((item) => (
-                  <li className="mb-12" key={item.title}>
-                    <article className="group relative grid grid-cols-8 gap-4 transition-all sm:items-center sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+              <SectionHeading>Skills</SectionHeading>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {profile.skills.map((group) => (
+                  <article
+                    className="rounded-md border border-slate-800 bg-slate-800/20 p-5 transition hover:border-slate-700 hover:bg-slate-800/40"
+                    key={group.title}
+                  >
+                    <h3 className="font-medium text-slate-200">{group.title}</h3>
+                    <ul className="mt-3 flex flex-wrap gap-2" aria-label={group.title}>
+                      {group.items.map((item) => (
+                        <li key={item}>
+                          <span className="rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section
+              id="education"
+              className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+              aria-label="Education"
+            >
+              <SectionHeading>Education</SectionHeading>
+              <ol className="group/list">
+                {profile.education.map((education) => (
+                  <li className="mb-12" key={education.school}>
+                    <article className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
                       <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-card-ring lg:group-hover:drop-shadow-lg" />
-                      <Image
-                        src={item.image}
-                        alt=""
-                        width={200}
-                        height={112}
-                        className="z-10 col-span-2 aspect-video rounded border-2 border-slate-200/10 object-cover transition group-hover:border-slate-200/30"
-                      />
-                      <div className="z-10 col-span-6">
-                        <p className="-mt-1 text-sm font-semibold leading-6">{item.year}</p>
-                        <h3 className="-mt-1">
+                      <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
+                        {education.period}
+                      </header>
+                      <div className="z-10 sm:col-span-6">
+                        <h3 className="font-medium leading-snug text-slate-200">
                           <a
                             className="group/link inline-flex items-baseline text-base font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
-                            href={item.href}
+                            href={education.schoolUrl}
                             target="_blank"
                             rel="noreferrer noopener"
-                            aria-label={`${item.title} (opens in a new tab)`}
+                            aria-label={`${education.school} (opens in a new tab)`}
                           >
                             <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
                             <span>
-                              {item.title}
+                              {education.school}
                               <ArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1" />
                             </span>
                           </a>
                         </h3>
+                        <p className="mt-2 text-sm font-medium leading-normal text-slate-300">
+                          {education.degree}
+                        </p>
+                        <ul className="mt-3 space-y-2 text-sm leading-normal">
+                          {education.details.map((detail) => (
+                            <li className="relative pl-5" key={detail}>
+                              <span className="absolute left-0 top-2 h-1.5 w-1.5 rounded-full bg-teal-300" />
+                              {detail}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </article>
                   </li>
                 ))}
-              </ul>
+              </ol>
             </section>
 
             <footer className="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
