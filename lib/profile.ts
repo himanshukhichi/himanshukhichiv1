@@ -7,9 +7,8 @@ export const profile = {
     github: "https://github.com/himanshukhichi",
     linkedin: "https://www.linkedin.com/in/himanshukhichi",
     leetcode: "https://leetcode.com/himanshukhichi99",
-    codepen: "",
-    instagram: "",
-    stackoverflow: ""
+    instagram: "https://www.instagram.com/ok.himks/",
+    resume: "/assets/himanshu-khichi-resume.pdf"
   },
   about: [
     "I'm a backend and platform engineer with 5 years of experience building production-grade infrastructure at Oracle Financial Services Software (OFSS), Bengaluru. I specialize in ML platform engineering, distributed systems, and cloud-native SaaS — with a deep focus on the messy, interesting problems that sit between model training and real-world deployment.",
@@ -19,10 +18,10 @@ export const profile = {
   ],
   experience: [
     {
-      period: "2021 — Present",
+      period: "Jul 2021 — May 2026",
       location: "Bengaluru, India",
-      role: "Software Engineer",
-      company: "Oracle Financial Services Software (OFSS)",
+      role: "Software Developer",
+      company: "Oracle (OFSS)",
       companyUrl: "https://www.oracle.com/",
       summary:
         "Oracle Financial Services Software is a global leader in financial technology, providing software solutions to banks and financial institutions worldwide. I am part of the Model Management & Governance (MMG) team — an enterprise-grade ML platform product built for regulated industries where model risk management and auditability are critical.",

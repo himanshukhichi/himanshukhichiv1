@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight, Download, Link as LinkIcon } from "lucide-react";
 import {
-  FaCodepen,
   FaGithub,
   FaInstagram,
   FaLinkedin,
-  FaStackOverflow
+  FaFileAlt
 } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { profile } from "@/lib/profile";
@@ -18,9 +17,8 @@ const socials = [
   { label: "GitHub", href: profile.social.github, icon: FaGithub },
   { label: "LinkedIn", href: profile.social.linkedin, icon: FaLinkedin },
   { label: "LeetCode", href: profile.social.leetcode, icon: SiLeetcode },
-  { label: "CodePen", href: profile.social.codepen, icon: FaCodepen },
   { label: "Instagram", href: profile.social.instagram, icon: FaInstagram },
-  { label: "Stack Overflow", href: profile.social.stackoverflow, icon: FaStackOverflow }
+  { label: "Resume", href: profile.social.resume, icon: FaFileAlt }
 ].filter((item) => item.href);
 
 export default function Home() {
@@ -118,7 +116,7 @@ export default function Home() {
                             rel="noreferrer noopener"
                             aria-label={`${job.role} at ${job.company} (opens in a new tab)`}
                           >
-                            <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
+                            <span className="pointer-events-none absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
                             <span>
                               {job.role} ·{" "}
                               <span className="inline-block">
@@ -236,7 +234,7 @@ export default function Home() {
                             rel="noreferrer noopener"
                             aria-label={`${education.school} (opens in a new tab)`}
                           >
-                            <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
+                            <span className="pointer-events-none absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
                             <span>
                               {education.school}
                               <ArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1" />
@@ -263,7 +261,7 @@ export default function Home() {
 
             <footer className="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
               <p>
-                Designed as a clean-room rebuild of the v5 portfolio layout in Next.js and Tailwind CSS. Content comes from Himanshu Khichi&apos;s portfolio data and resume. Built for quick edits, fast deployment, and a calm dark-mode reading experience.
+                This resume was built with Next.js, Tailwind CSS, and a dash of creative flair. If you’d like to chat, collaborate, or just say hi, feel free to reach out!
               </p>
               <p className="mt-4 inline-flex items-center gap-2">
                 <LinkIcon className="h-4 w-4" />
