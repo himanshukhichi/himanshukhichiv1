@@ -1,7 +1,7 @@
 export const profile = {
   name: "Himanshu Khichi",
-  role: "Backend & Platform Engineer",
-  tagline: "I build reliable backend platforms, ML systems, and cloud-native services.",
+  role: "Software Engineer",
+  tagline: "I build reliable backend platforms, and cloud-native services.",
   email: "himanshukhichi99@gmail.com",
   social: {
     github: "https://github.com/himanshukhichi",
