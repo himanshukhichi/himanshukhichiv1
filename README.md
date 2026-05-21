@@ -1,4 +1,4 @@
-# Himanshu Portfolio
+# Himanshu website
 
 Fresh Next.js + Tailwind rebuild inspired by the layout at `brittanychiang.com`.
 
