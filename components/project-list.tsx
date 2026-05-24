@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { profile } from "@/lib/profile";
 
-const filters = ["all", "java", "go", "python", "javascript"] as const;
+const filters = ["all", "Java", "Python", "SQL", "Lua", "JavaScript", "Protocol Buffers", "YAML", "Shell"] as const;
 type LanguageFilter = (typeof filters)[number];
 type ProjectLanguage = Exclude<LanguageFilter, "all">;
 
