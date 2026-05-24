@@ -63,7 +63,7 @@ export const profile = {
   },
   {
     title: "Distributed Key-Value Store",
-    href: "https://github.com/himanshukhichi/distkv",
+    href: "https://github.com/himanshukhichi/DistributedKVstore",
     description:
       "A multi-node distributed key-value store built from scratch in Java, modelled after the core architecture of Amazon DynamoDB and Apache Cassandra. Data is sharded across nodes via consistent hashing with 150 virtual nodes per physical node — minimising key remapping when the cluster topology changes. Replication uses tunable quorum (N, R, W configurable per request) with vector clocks for conflict detection and hinted handoff for availability during temporary node failures. Each node runs a storage engine backed by a write-ahead log for crash recovery, LRU eviction, and a bloom filter that short-circuits negative lookups before they hit memory. Cluster membership and failure detection are handled by a gossip protocol — each node pings two random peers per second and marks unreachable nodes suspect after three missed cycles. The full API is exposed over gRPC with a streaming Scan RPC, and a Grafana dashboard visualises real-time ops/sec, P99 latency, and node health across the cluster.",
     languages: ["java"],
