@@ -46,7 +46,7 @@ export const profile = {
     href: "https://github.com/himanshukhichi/flowmesh",
     description:
       "A distributed job orchestration engine that executes DAGs of dependent tasks across a cluster of worker nodes. The scheduler runs with Redis Redlock-based leader election — only one instance schedules at a time, with hot-standby failover under 10 seconds. Tasks are distributed via Kafka with exactly-once delivery guarantees using transactional producers and a PostgreSQL deduplication table. DAG submissions are validated for cycles via DFS, then execution order is resolved with Kahn's topological sort. Failed tasks retry with exponential backoff before landing in a dead-letter queue. Workers register via gRPC and send periodic heartbeats; the scheduler re-queues tasks from workers that go silent. Horizontally scalable to 5+ worker nodes with per-task-type Kafka topic routing and full Prometheus observability.",
-    languages: ["Java"],
+    languages: ["java"],
     technologies: [
       "Java 17",
       "Spring Boot 3",
@@ -66,7 +66,7 @@ export const profile = {
     href: "https://github.com/himanshukhichi/distkv",
     description:
       "A multi-node distributed key-value store built from scratch in Java, modelled after the core architecture of Amazon DynamoDB and Apache Cassandra. Data is sharded across nodes via consistent hashing with 150 virtual nodes per physical node — minimising key remapping when the cluster topology changes. Replication uses tunable quorum (N, R, W configurable per request) with vector clocks for conflict detection and hinted handoff for availability during temporary node failures. Each node runs a storage engine backed by a write-ahead log for crash recovery, LRU eviction, and a bloom filter that short-circuits negative lookups before they hit memory. Cluster membership and failure detection are handled by a gossip protocol — each node pings two random peers per second and marks unreachable nodes suspect after three missed cycles. The full API is exposed over gRPC with a streaming Scan RPC, and a Grafana dashboard visualises real-time ops/sec, P99 latency, and node health across the cluster.",
-    languages: ["Java"],
+    languages: ["java"],
     technologies: [
       "Java 17",
       "gRPC",
@@ -86,7 +86,7 @@ export const profile = {
     href: "https://github.com/himanshukhichi/feature-store",
     description:
       "A high-throughput feature serving platform with a dual-store architecture: an online store backed by Redis for low-latency model inference reads (under 5ms P99), and an offline store in PostgreSQL for point-in-time correct training data retrieval. Feature ingestion flows through a Kafka pipeline partitioned by entity ID, with separate consumer groups materialising data into each store. A schema registry validates all incoming feature payloads against registered definitions before they enter the pipeline, preventing schema drift. The platform supports batch retrieval via Redis MGET pipelines, multi-group feature vectors in a single API call, and a training dataset export API that reconstructs what feature values looked like at any past timestamp — solving the label leakage problem for ML teams. Background jobs compute per-feature statistics (null rate, mean, std, P95) and detect staleness when values exceed twice their configured freshness TTL.",
-    languages: ["Java"],
+    languages: ["java"],
     technologies: [
       "Java 17",
       "Spring Boot 3",
@@ -104,7 +104,7 @@ export const profile = {
     href: "https://github.com/himanshukhichi/RateLimiterService",
     description:
       "A pluggable distributed rate limiting library for Spring Boot applications. Implements four algorithms — token bucket, sliding window log, sliding window counter, and fixed window counter — each executed atomically on Redis using Lua scripts to prevent race conditions under concurrent load. Rate limits are enforced by API key, IP address, or composite user-plus-endpoint keys, with configurable limits per endpoint. Packaged as a Spring Boot Starter: any application adds the Maven dependency, annotates controller methods with @RateLimit, and gets enforcement via Spring AOP with zero boilerplate. An admin REST API allows live limit updates without restart, stored back in Redis so all running instances pick up changes instantly. Includes standard 429 response headers (X-RateLimit-Remaining, Retry-After) and a JMeter benchmark showing sustained throughput at 100K requests per second.",
-    languages: ["Java"],
+    languages: ["java"],
     technologies: [
       "Java 17",
       "Spring Boot 3",
@@ -124,7 +124,7 @@ export const profile = {
     href: "https://github.com/himanshukhichi/Dino-game-live-guitar-control",
     description:
       "A college experiment in on-device ML inference: a Keras CNN trained on MFCC audio features classifies live guitar chords from a microphone in real time and maps them to keyboard events that control the Chrome Dino game. The core engineering challenge was the audio buffer size vs. inference latency tradeoff — too small a buffer produces noisy MFCC features; too large introduces perceptible lag. The model processes 13 MFCC coefficients per 512-sample frame at 22050 Hz, achieving under 80ms end-to-end latency from string pluck to game response. Built with TensorFlow and Keras for the classification model, librosa for audio feature extraction, and Pygame for game rendering.",
-    languages: ["Python"],
+    languages: ["python"],
     technologies: [
       "Python 3",
       "TensorFlow",
