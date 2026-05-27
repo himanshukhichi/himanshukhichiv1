@@ -43,7 +43,7 @@ export const profile = {
       details: [
         "Reduced per-dataset storage by 99.9% (GBs → KBs) by building a scheduled profiling pipeline (whylogs) generating compact binary profiles capturing per-feature statistics across thousands of datasets.",
         "Designed a data drift detection service — aggregates profiles into baseline and target distributions, computes per-feature drift against configurable thresholds, and triggers automated alerts enabling proactive model degradation detection.",
-        "Engineered backend APIs (Java, Spring Boot) for dataset transformations with reusable script templates, and built UI components (Oracle JET) standardising transformation workflows across teams.",
+        "Engineered backend APIs (Java, Spring Boot) for ML pipeline and dataset transformations with reusable script templates, and built UI components (Oracle JET) standardising transformation workflows across teams.",
         "Developed dataset analytics features including profile comparisons, time-series visualisations, and correlation insights for feature-level monitoring."
       ],
       technologies: ["Java", "Spring Boot", "Python", "whylogs", "REST APIs", "Oracle JET", "Oracle DB"]
@@ -54,7 +54,7 @@ export const profile = {
     title: "FlowMesh — Distributed DAG Scheduler",
     href: "https://github.com/himanshukhichi/flowmesh",
     description:
-      "Distributed job orchestration engine that executes dependency-aware DAGs across a horizontally scalable worker cluster. Features Redis Redlock leader election with sub-10s failover, Kafka-based task distribution with exactly-once delivery semantics, DFS cycle detection, Kahn's topological sort for execution ordering, and a 6-state task machine with exponential backoff retry and dead-letter queue recovery. Workers register via gRPC and emit heartbeats — stale workers are evicted and their tasks automatically re-queued.",
+      "Distributed job scheduler that executes dependency-aware DAGs across a scalable worker cluster. Features Redis Redlock leader election, Kafka exactly-once task delivery, DFS cycle detection, Kahn's topological sort, and a 6-state task machine with exponential backoff retry and dead-letter queue recovery.",
     languages: ["Java", "SQL", "Protocol Buffers", "YAML", "Shell"],
     technologies: [
       "Java 21", "Spring Boot 3", "Apache Kafka", "Redis",
@@ -67,7 +67,7 @@ export const profile = {
     title: "DistKV — Distributed Key-Value Store",
     href: "https://github.com/himanshukhichi/DistributedKVstore",
     description:
-      "Multi-node distributed KV store built from scratch modelled after DynamoDB and Cassandra. Shards data via consistent hashing with 150 virtual nodes, replicates across N nodes with tunable quorum (R/W configurable per request), and uses vector clocks for conflict detection with hinted handoff for availability during node failures. Each node runs a storage engine with a write-ahead log, LRU eviction, and bloom filters. Cluster membership and failure detection run on a gossip protocol. Full gRPC API with streaming Scan RPC and a Grafana dashboard for real-time cluster observability.",
+      "Multi-node KV store built from scratch modelled after DynamoDB. Consistent hashing with 150 virtual nodes, tunable quorum replication (N/R/W configurable), gossip-based failure detection, hinted handoff, write-ahead log, LRU eviction, bloom filters, and a full gRPC API with Grafana observability.",
     languages: ["Java", "Protocol Buffers", "Shell", "YAML"],
     technologies: [
       "Java 21", "gRPC", "Netty", "Docker Compose",
@@ -80,7 +80,7 @@ export const profile = {
     title: "Feature Store — ML Feature Serving Platform",
     href: "https://github.com/himanshukhichi/feature-store",
     description:
-      "High-throughput feature serving platform with a dual-store architecture — Redis for sub-5ms online inference reads and PostgreSQL for point-in-time correct offline training data. Kafka ingestion pipeline partitioned by entity ID fans out to both stores via separate consumer groups. Supports batch Redis MGET retrieval, multi-group feature vectors in a single API call, and a training dataset export API that reconstructs historical feature values at any past timestamp — eliminating label leakage in ML training pipelines.",
+      "Dual-store feature serving platform — Redis for sub-5ms online inference reads, PostgreSQL for point-in-time correct offline training data. Kafka ingestion pipeline fans out to both stores via separate consumer groups, with batch retrieval, multi-group feature vectors, and a training dataset export API that eliminates label leakage.",
     languages: ["Java", "SQL", "YAML", "Shell"],
     technologies: [
       "Java 21", "Spring Boot 3", "Apache Kafka",
@@ -93,7 +93,7 @@ export const profile = {
     title: "Rate Limiter Service",
     href: "https://github.com/himanshukhichi/RateLimiterService",
     description:
-      "Pluggable distributed rate limiting library for Spring Boot applications implementing four algorithms — token bucket, sliding window log, sliding window counter, and fixed window counter — each executed atomically on Redis via Lua scripts to eliminate race conditions under concurrent load. Packaged as a Spring Boot Starter: annotate any controller method with @RateLimit and enforcement is applied via Spring AOP. Admin REST API allows live limit updates without restart. Benchmarked at 100K+ requests/sec with JMeter.",
+      "Pluggable Spring Boot Starter implementing four rate limiting algorithms (token bucket, sliding window log, sliding window counter, fixed window) executed atomically on Redis via Lua scripts. Add @RateLimit to any controller method — enforcement is applied via Spring AOP. Benchmarked at 100K+ requests/sec.",
     languages: ["Java", "Lua", "YAML", "Shell"],
     technologies: [
       "Java 21", "Spring Boot 3", "Redis", "Lettuce",
@@ -106,7 +106,7 @@ export const profile = {
     title: "Dino Guitar — Real-Time ML Game Control",
     href: "https://github.com/himanshukhichi/Dino-game-live-guitar-control",
     description:
-      "A college experiment in on-device ML inference — a Keras CNN trained on MFCC audio features classifies live guitar chords from a microphone in real time and maps them to keyboard events controlling the Chrome Dino game. Core engineering challenge: tuning audio buffer size vs. inference latency (512 samples at 22050Hz = 23ms per frame, ~15ms CNN inference, ~38ms total round-trip). Includes a training notebook, per-chord confusion matrix, and model card.",
+      "A college experiment in on-device ML inference — a Keras CNN trained on MFCC audio features classifies live guitar chords from a microphone in real time and maps them to keyboard events controlling the Chrome Dino game. Core challenge: tuning audio buffer size vs. inference latency for under 40ms end-to-end response.",
     languages: ["Python", "Jupyter Notebook"],
     technologies: ["Python 3", "TensorFlow", "Keras", "librosa", "Pygame", "NumPy", "scikit-learn"],
     category: "For Fun",
