@@ -22,7 +22,7 @@ export const profile = {
       location: "Bengaluru, India",
       role: "Software Engineer",
       company: "Oracle (OFSS)",
-      companyUrl: "https://www.oracle.com/",
+      companyUrl: "https://www.oracle.com/financial-services/",
       summary:
         "I was part of the Model Management & Governance (MMG) team — an enterprise ML platform built for regulated financial institutions where model risk management, auditability, and regulatory compliance are critical requirements.",
       details: [
@@ -37,7 +37,7 @@ export const profile = {
       location: "Bengaluru, India",
       role: "Associate Software Engineer",
       company: "Oracle (OFSS)",
-      companyUrl: "https://www.oracle.com/",
+      companyUrl: "https://www.oracle.com/financial-services/",
       summary:
         "Focused on the data quality and analytics layer of MMG, turning raw dataset statistics into compact profiles, drift signals, transformation workflows, and feature-level monitoring views.",
       details: [
