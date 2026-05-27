@@ -7,7 +7,7 @@ const archiveRows = [
     year: "2026",
     title: project.title,
     builtWith: project.technologies,
-    href: project.href
+    href: project.href ?? undefined
   })),
   {
     year: "2026",
@@ -56,15 +56,19 @@ export default function ArchivePage() {
                   {project.year}
                 </td>
                 <td className="py-4 pr-8 align-top font-medium text-slate-200">
-                  <a
-                    href={project.href}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="group/link inline-flex items-baseline hover:text-teal-300 focus-visible:text-teal-300"
-                  >
-                    {project.title}
-                    <ArrowUpRight className="ml-1 h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
-                  </a>
+                  {project.href ? (
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="group/link inline-flex items-baseline hover:text-teal-300 focus-visible:text-teal-300"
+                    >
+                      {project.title}
+                      <ArrowUpRight className="ml-1 h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
+                    </a>
+                  ) : (
+                    <span>{project.title}</span>
+                  )}
                 </td>
                 <td className="hidden py-4 pr-8 align-top text-slate-400 md:table-cell">
                   <ul className="flex flex-wrap gap-1.5">

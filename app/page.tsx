@@ -1,8 +1,7 @@
 import Image from "next/image";
-import { ArrowRight, ArrowUpRight, Download, Link as LinkIcon } from "lucide-react";
+import { ArrowUpRight, Download, Link as LinkIcon } from "lucide-react";
 import {
   FaGithub,
-  FaInstagram,
   FaLinkedin,
   FaFileAlt
 } from "react-icons/fa";
@@ -17,9 +16,13 @@ const socials = [
   { label: "GitHub", href: profile.social.github, icon: FaGithub },
   { label: "LinkedIn", href: profile.social.linkedin, icon: FaLinkedin },
   { label: "LeetCode", href: profile.social.leetcode, icon: SiLeetcode },
-  { label: "Instagram", href: profile.social.instagram, icon: FaInstagram },
   { label: "Resume", href: profile.social.resume, icon: FaFileAlt }
 ].filter((item) => item.href);
+
+const footerSocials = [
+  { label: "GitHub", href: profile.social.github, icon: FaGithub },
+  { label: "LinkedIn", href: profile.social.linkedin, icon: FaLinkedin }
+];
 
 export default function Home() {
   return (
@@ -52,6 +55,9 @@ export default function Home() {
                 {profile.role}
               </h2>
               <p className="mt-4 max-w-xs leading-normal">{profile.tagline}</p>
+              <p className="mt-3 max-w-sm text-sm font-medium text-slate-300">
+                {profile.techIdentity}
+              </p>
 
               <NavLinks />
             </div>
@@ -171,17 +177,6 @@ export default function Home() {
             >
               <SectionHeading>Projects</SectionHeading>
               <ProjectList />
-              <div className="mt-12">
-                <a
-                  className="group inline-flex items-center text-base font-semibold leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300"
-                  href="/archive"
-                >
-                  <span>
-                    <span className="pb-px transition">View Full Project Archive</span>
-                    <ArrowRight className="ml-1 inline-block h-4 w-4 shrink-0 -translate-y-px transition-transform group-hover:translate-x-2 group-focus-visible:translate-x-2" />
-                  </span>
-                </a>
-              </div>
             </section>
 
             <section
@@ -261,14 +256,33 @@ export default function Home() {
 
             <footer className="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
               <p>
-                This resume was built with Next.js, Tailwind CSS, and a dash of creative flair. If you’d like to chat, collaborate, or just say hi, feel free to reach out!
+                Built with Next.js and Tailwind CSS.
               </p>
-              <p className="mt-4 inline-flex items-center gap-2">
-                <LinkIcon className="h-4 w-4" />
-                <a className="font-medium text-slate-400 hover:text-teal-300" href={`mailto:${profile.email}`}>
-                  {profile.email}
-                </a>
+              <p className="mt-4 flex items-start gap-2">
+                <LinkIcon className="mt-0.5 h-4 w-4 shrink-0" />
+                <span>
+                  Open to backend engineering and distributed systems roles. Reach out at{" "}
+                  <a className="font-medium text-slate-400 hover:text-teal-300" href={`mailto:${profile.email}`}>
+                    {profile.email}
+                  </a>
+                  .
+                </span>
               </p>
+              <ul className="mt-5 flex items-center gap-4" aria-label="Footer social links">
+                {footerSocials.map(({ label, href, icon: Icon }) => (
+                  <li key={label}>
+                    <a
+                      className="inline-flex items-center gap-2 text-slate-400 hover:text-teal-300 focus-visible:text-teal-300"
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                      <span>{label}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </footer>
           </main>
         </div>

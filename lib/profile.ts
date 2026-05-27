@@ -1,43 +1,52 @@
 export const profile = {
   name: "Himanshu Khichi",
-  role: "Software Engineer",
-  tagline: "I build reliable backend platforms, and cloud-native services.",
+  role: "Backend Software Engineer",
+  tagline: "I build distributed backend systems and the infrastructure that keeps them correct at scale.",
+  techIdentity: "Java · Spring Boot · Kafka · Redis · gRPC · PostgreSQL · AWS",
   email: "himanshukhichi99@gmail.com",
   social: {
     github: "https://github.com/himanshukhichi",
     linkedin: "https://www.linkedin.com/in/himanshukhichi",
     leetcode: "https://leetcode.com/himanshukhichi99",
-    instagram: "https://www.instagram.com/ok.himks/",
     resume: "/assets/himanshu-khichi-resume.pdf"
   },
   about: [
-    "I'm a backend and platform engineer with 5 years of experience building production-grade infrastructure at Oracle Financial Services Software (OFSS), Bengaluru. I specialize in ML platform engineering, distributed systems, and cloud-native SaaS — with a deep focus on the messy, interesting problems that sit between model training and real-world deployment.",
-    "At Oracle, I work on Model Management & Governance (MMG) — an enterprise ML platform that helps financial institutions manage the full lifecycle of their AI/ML models, from registration and validation to deployment, monitoring, and regulatory compliance.",
-    "I'm passionate about systems that scale, APIs that don't lie, and pipelines that don't silently fail. Outside of work, I invest time in structured learning across distributed systems, system design, and low-level performance engineering.",
+    "I'm a Backend Software Engineer with 5 years of experience building production systems at Oracle Financial Services Software (OFSS), Bengaluru. I specialise in distributed systems, ML infrastructure, and cloud-native backend services — with a focus on the hard problems between model training and real-world deployment.",
+    "At Oracle, I worked on Model Management & Governance (MMG) — an enterprise ML platform that helps financial institutions manage the full lifecycle of their AI/ML models, from registration and validation to deployment, monitoring, and regulatory compliance. I built the model serving layer, the statistical profiling pipeline, the data drift detection service, and led the full migration of the platform from on-prem to OCI.",
+    "Outside of work I build: a distributed KV store with consistent hashing and quorum replication, a DAG-based job scheduler with Kafka exactly-once semantics and Redis leader election, an ML feature store with dual online/offline serving architecture, and a rate limiter library with atomic Redis Lua scripts.",
     "I hold a B.Tech in Computer Science from NIT Warangal."
   ],
   experience: [
     {
-      period: "Jul 2021 — May 2026",
+      period: "Aug 2024 — May 2026",
       location: "Bengaluru, India",
-      role: "Software Developer",
+      role: "Software Engineer",
       company: "Oracle (OFSS)",
       companyUrl: "https://www.oracle.com/",
       summary:
-        "Oracle Financial Services Software is a global leader in financial technology, providing software solutions to banks and financial institutions worldwide. I am part of the Model Management & Governance (MMG) team — an enterprise-grade ML platform product built for regulated industries where model risk management and auditability are critical.",
+        "I was part of the Model Management & Governance (MMG) team — an enterprise ML platform built for regulated financial institutions where model risk management, auditability, and regulatory compliance are critical requirements.",
       details: [
-        "Designed and built a model serving platform enabling deployment of ML models as REST APIs, allowing external consumption outside the MMG platform, with support for multi-model hosting, authentication, request-level logging, and Swagger UI-based testing.",
-        "Led end-to-end SaaS migration of the MMG platform from on-premises to Oracle Cloud Infrastructure (OCI); ported the codebase, built SaaS services and jobs (WAR/JAR), and implemented a unified codebase strategy to maintain consistency across on-prem and SaaS deployments.",
-        "Built OCI DevOps CI/CD pipelines for multiple MMG microservices to automate Docker image builds and artifact publishing (JAR/WAR) to Artifactory, standardizing build and release workflows across services.",
-        "Enabled generation of both JAR and WAR artifacts within a single CI/CD pipeline, simplifying build workflows across services.",
-        "Provisioned and managed OCI development instances using the AppMan pipeline with environment-specific configurations; handled instance lifecycle and supported release activities across MMG services.",
-        "Developed a createConda API to provision isolated conda environments from Object Storage specifications, eliminating manual admin workflows and reducing environment setup time by ~80%.",
-        "Reduced per-dataset storage by 99.9% (GBs to KBs) by building a scheduled profiling pipeline (whylogs) that generates compact .bin profile files capturing per-feature stats across thousands of datasets.",
-        "Developed dataset analytics features including profile comparisons, time-series visualizations, and correlation insights for feature-level monitoring.",
-        "Designed and implemented a data drift detection service: aggregates profiles into baseline and target distributions, computes per-feature drift with configurable thresholds, and triggers automated alerts when data quality degrades.",
-        "Engineered backend APIs (Java, Spring Boot) and UI components (Oracle JET) for dataset transformations, including reusable script templates to standardize transformation workflows across datasets."
+        "Architected a multi-tenant ML model serving platform exposing trained models as authenticated REST APIs — supporting multi-model hosting, per-request audit logging, and Swagger UI testing, enabling external client consumption for the first time in the MMG product.",
+        "Led end-to-end SaaS migration of MMG from on-premises to OCI; implemented a unified codebase strategy maintaining consistency across on-prem and SaaS, and built OCI DevOps CI/CD pipelines automating Docker builds and Artifactory publishing across all microservices.",
+        "Developed a createConda API provisioning isolated conda environments from Object Storage specifications, eliminating manual admin workflows and cutting setup time by ~80%."
       ],
-      technologies: ["Java", "Spring Boot", "OCI", "Docker", "Kubernetes", "CI/CD", "Oracle JET"]
+      technologies: ["Java", "Spring Boot", "Python", "Oracle Cloud (OCI)", "Docker", "Kubernetes", "CI/CD", "REST APIs"]
+    },
+    {
+      period: "Jul 2021 — Aug 2024",
+      location: "Bengaluru, India",
+      role: "Associate Software Engineer",
+      company: "Oracle (OFSS)",
+      companyUrl: "https://www.oracle.com/",
+      summary:
+        "Focused on the data quality and analytics layer of MMG, turning raw dataset statistics into compact profiles, drift signals, transformation workflows, and feature-level monitoring views.",
+      details: [
+        "Reduced per-dataset storage by 99.9% (GBs → KBs) by building a scheduled profiling pipeline (whylogs) generating compact binary profiles capturing per-feature statistics across thousands of datasets.",
+        "Designed a data drift detection service — aggregates profiles into baseline and target distributions, computes per-feature drift against configurable thresholds, and triggers automated alerts enabling proactive model degradation detection.",
+        "Engineered backend APIs (Java, Spring Boot) for dataset transformations with reusable script templates, and built UI components (Oracle JET) standardising transformation workflows across teams.",
+        "Developed dataset analytics features including profile comparisons, time-series visualisations, and correlation insights for feature-level monitoring."
+      ],
+      technologies: ["Java", "Spring Boot", "Python", "whylogs", "REST APIs", "Oracle JET", "Oracle DB"]
     }
   ],
   projects: [
@@ -48,21 +57,23 @@ export const profile = {
       "Distributed job orchestration engine that executes dependency-aware DAGs across a horizontally scalable worker cluster. Features Redis Redlock leader election with sub-10s failover, Kafka-based task distribution with exactly-once delivery semantics, DFS cycle detection, Kahn's topological sort for execution ordering, and a 6-state task machine with exponential backoff retry and dead-letter queue recovery. Workers register via gRPC and emit heartbeats — stale workers are evicted and their tasks automatically re-queued.",
     languages: ["Java", "SQL", "Protocol Buffers", "YAML", "Shell"],
     technologies: [
-      "Java 17", "Spring Boot 3", "Apache Kafka", "Redis",
+      "Java 21", "Spring Boot 3", "Apache Kafka", "Redis",
       "PostgreSQL", "gRPC", "Docker Compose", "Prometheus", "AWS ECS",
     ],
+    category: "Distributed Systems",
     image: "/images/projects/flowmesh.png",
   },
   {
-    title: "Distributed Key-Value Store",
+    title: "DistKV — Distributed Key-Value Store",
     href: "https://github.com/himanshukhichi/DistributedKVstore",
     description:
       "Multi-node distributed KV store built from scratch modelled after DynamoDB and Cassandra. Shards data via consistent hashing with 150 virtual nodes, replicates across N nodes with tunable quorum (R/W configurable per request), and uses vector clocks for conflict detection with hinted handoff for availability during node failures. Each node runs a storage engine with a write-ahead log, LRU eviction, and bloom filters. Cluster membership and failure detection run on a gossip protocol. Full gRPC API with streaming Scan RPC and a Grafana dashboard for real-time cluster observability.",
     languages: ["Java", "Protocol Buffers", "Shell", "YAML"],
     technologies: [
-      "Java 17", "gRPC", "Netty", "Docker Compose",
+      "Java 21", "gRPC", "Netty", "Docker Compose",
       "Prometheus", "Grafana", "JUnit 5", "Mockito", "AWS EC2",
     ],
+    category: "Distributed Systems",
     image: "/images/projects/distkv.png",
   },
   {
@@ -72,9 +83,10 @@ export const profile = {
       "High-throughput feature serving platform with a dual-store architecture — Redis for sub-5ms online inference reads and PostgreSQL for point-in-time correct offline training data. Kafka ingestion pipeline partitioned by entity ID fans out to both stores via separate consumer groups. Supports batch Redis MGET retrieval, multi-group feature vectors in a single API call, and a training dataset export API that reconstructs historical feature values at any past timestamp — eliminating label leakage in ML training pipelines.",
     languages: ["Java", "SQL", "YAML", "Shell"],
     technologies: [
-      "Java 17", "Spring Boot 3", "Apache Kafka",
+      "Java 21", "Spring Boot 3", "Apache Kafka",
       "Redis", "PostgreSQL", "Docker Compose", "Prometheus", "JUnit 5",
     ],
+    category: "ML Platform",
     image: "/images/projects/feature-store.png",
   },
   {
@@ -84,36 +96,56 @@ export const profile = {
       "Pluggable distributed rate limiting library for Spring Boot applications implementing four algorithms — token bucket, sliding window log, sliding window counter, and fixed window counter — each executed atomically on Redis via Lua scripts to eliminate race conditions under concurrent load. Packaged as a Spring Boot Starter: annotate any controller method with @RateLimit and enforcement is applied via Spring AOP. Admin REST API allows live limit updates without restart. Benchmarked at 100K+ requests/sec with JMeter.",
     languages: ["Java", "Lua", "YAML", "Shell"],
     technologies: [
-      "Java 17", "Spring Boot 3", "Redis", "Lettuce",
+      "Java 21", "Spring Boot 3", "Redis", "Lettuce",
       "Lua", "Spring AOP", "Docker Compose", "Prometheus", "JUnit 5", "Mockito",
     ],
+    category: "Distributed Systems",
     image: "/images/projects/rate-limiter.png",
+  },
+  {
+    title: "Dino Guitar — Real-Time ML Game Control",
+    href: "https://github.com/himanshukhichi/Dino-game-live-guitar-control",
+    description:
+      "A college experiment in on-device ML inference — a Keras CNN trained on MFCC audio features classifies live guitar chords from a microphone in real time and maps them to keyboard events controlling the Chrome Dino game. Core engineering challenge: tuning audio buffer size vs. inference latency (512 samples at 22050Hz = 23ms per frame, ~15ms CNN inference, ~38ms total round-trip). Includes a training notebook, per-chord confusion matrix, and model card.",
+    languages: ["Python", "Jupyter Notebook"],
+    technologies: ["Python 3", "TensorFlow", "Keras", "librosa", "Pygame", "NumPy", "scikit-learn"],
+    category: "For Fun",
+    badge: "For Fun",
+    image: "/images/projects/dino-guitar.png",
   }
 ],
   skills: [
     {
       title: "Languages",
-      items: ["Java", "C/C++", "Python", "SQL", "JavaScript"]
+      items: ["Java","C/C++", "Python", "SQL", "JavaScript", "Protocol Buffers", "Lua"]
     },
     {
       title: "Backend & APIs",
-      items: ["Spring Boot", "REST APIs", "Microservices", "API Design", "Swagger"]
+      items: ["Spring Boot 3", "gRPC", "REST APIs", "Microservices", "Spring AOP", "FastAPI", "CompletableFuture", "Virtual Threads"]
     },
     {
-      title: "ML Platform & Data",
-      items: ["Model Serving", "Model Monitoring", "Data Drift Detection", "Dataset Profiling", "whylogs"]
+      title: "Distributed Systems",
+      items: ["Consistent Hashing", "Quorum Replication", "Leader Election", "Gossip Protocol", "Distributed Locking (Redlock)", "Event-Driven Architecture", "CAP Theorem"]
+    },
+    {
+      title: "Messaging & Streaming",
+      items: ["Apache Kafka", "Transactional Producers", "Consumer Groups", "Dead-Letter Queues"]
+    },
+    {
+      title: "Databases & Storage",
+      items: ["Redis", "PostgreSQL", "Oracle DB", "Write-Ahead Log (WAL)", "Bloom Filters", "LRU Eviction"]
     },
     {
       title: "Cloud & DevOps",
-      items: ["Oracle Cloud Infrastructure", "Docker", "Kubernetes", "OCI DevOps", "CI/CD", "Artifactory"]
+      items: ["AWS (EC2, ECS, RDS, ElastiCache)", "Oracle Cloud Infrastructure (OCI)", "Docker", "Kubernetes", "CI/CD Pipelines", "Git", "Artifactory", "Prometheus", "Grafana"]
     },
     {
-      title: "Databases & Tooling",
-      items: ["Relational Databases", "Oracle", "SQL Developer", "Git", "Linux"]
+      title: "ML Platform & Data",
+      items: ["Model Serving", "Data Drift Detection", "Statistical Profiling (whylogs)", "Feature Store Design", "ML Pipeline Orchestration"]
     },
     {
-      title: "Engineering Fundamentals",
-      items: ["Distributed Systems", "System Design", "Data Structures & Algorithms", "Operating Systems", "Code Review"]
+      title: "Testing & Practices",
+      items: ["JUnit 5", "Mockito", "Load Testing (JMeter)", "System Design", "Agile/Scrum", "Code Review"]
     }
   ],
   education: [
@@ -123,7 +155,7 @@ export const profile = {
       period: "Jul 2017 — Jun 2021",
       degree: "B.Tech, Computer Science & Engineering",
       details: [
-        "Coursework: Data Structures & Algorithms, Object-Oriented Programming, Database, Operating Systems"
+        "Coursework: Data Structures & Algorithms, Distributed Systems, Operating Systems, Database Systems, Object-Oriented Programming, Computer Networks"
       ]
     }
   ]

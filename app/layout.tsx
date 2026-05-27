@@ -9,16 +9,27 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://himanshukhichi.dev"),
-  title: "Himanshu Khichi",
+  metadataBase: new URL("https://himanshukhichi.vercel.app"),
+  title: "Himanshu Khichi | Backend Software Engineer",
   description:
-    "Backend and Platform Engineer working on ML platform systems, model serving, SaaS migration, and distributed backend services.",
+    "Backend Software Engineer with 5 years building distributed systems and ML infrastructure. Java, Spring Boot, Kafka, Redis, gRPC, PostgreSQL.",
+  alternates: {
+    canonical: "https://himanshukhichi.vercel.app"
+  },
   openGraph: {
-    title: "Himanshu Khichi",
+    title: "Himanshu Khichi — Backend Software Engineer",
     description:
-      "Backend and Platform Engineer working on ML platform systems, model serving, SaaS migration, and distributed backend services.",
+      "Backend Software Engineer with 5 years building distributed systems and ML infrastructure. Java, Spring Boot, Kafka, Redis, gRPC, PostgreSQL.",
     type: "website",
-    images: ["/assets/hk-monogram.png"]
+    url: "https://himanshukhichi.vercel.app",
+    images: ["https://himanshukhichi.vercel.app/assets/hk-monogram.png"]
+  },
+  twitter: {
+    card: "summary",
+    title: "Himanshu Khichi — Backend Software Engineer",
+    description:
+      "Backend Software Engineer with 5 years building distributed systems and ML infrastructure. Java, Spring Boot, Kafka, Redis, gRPC, PostgreSQL.",
+    images: ["https://himanshukhichi.vercel.app/assets/hk-monogram.png"]
   },
   icons: {
     icon: "/assets/hk-monogram.png",
