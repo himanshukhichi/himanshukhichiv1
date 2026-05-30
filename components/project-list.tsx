@@ -10,7 +10,7 @@ type CategoryFilter = (typeof filters)[number];
 type ProjectCategory = Exclude<CategoryFilter, "All">;
 
 export function ProjectList() {
-  const [activeFilter, setActiveFilter] = useState<CategoryFilter>("All");
+  const [activeFilter, setActiveFilter] = useState<CategoryFilter>("Distributed Systems");
 
   const projects = useMemo(() => {
     if (activeFilter === "All") return profile.projects;
