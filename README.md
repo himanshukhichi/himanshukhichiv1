@@ -15,6 +15,7 @@ Fresh Next.js + Tailwind rebuild inspired by the layout at `brittanychiang.com`.
 ```bash
 npm install
 npm run dev
+
 ```
 
 Open `http://localhost:3000`.
